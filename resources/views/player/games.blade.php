@@ -1,5 +1,5 @@
 {{ $slot }}
-<table>
+<table class="table">
     <thead>
         <th>№</th>
         <th>Day</th>

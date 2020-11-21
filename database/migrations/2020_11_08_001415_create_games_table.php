@@ -28,7 +28,7 @@ class CreateGamesTable extends Migration
             $table->foreignId('best_black_id')->nullable();
             $table->foreign('best_black_id')->references('id')->on('players');
 
-            $table->enum('result', ['black_win', 'red_win']);
+            $table->enum('result', [App\Models\Game::RESULTS]);
 
             $table->string('description', 256)->default('');
 

@@ -56,4 +56,14 @@ class Game extends Model
     {
         return $this->hasMany(\App\Models\GameVoting::class, 'game_id');
     }
+
+    public function bestRed()
+    {
+        return $this->belongsTo(\App\Models\Player::class, 'best_red_id');
+    }
+
+    public function bestBlack()
+    {
+        return $this->belongsTo(\App\Models\Player::class, 'best_black_id');
+    }
 }

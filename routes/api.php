@@ -20,6 +20,11 @@ use App\Models\GamePlayer;
 |
 */
 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
 Route::get('/player/{player}', function (Player $player) {
     return response()->json($player, 200);
 });
