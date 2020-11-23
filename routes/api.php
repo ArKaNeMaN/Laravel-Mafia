@@ -20,10 +20,11 @@ use App\Models\GamePlayer;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Player
 
 Route::get('/player/{player}', function (Player $player) {
     return response()->json($player, 200);

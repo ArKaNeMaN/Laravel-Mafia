@@ -53,13 +53,9 @@ Route::put('/game/{id}/edit', [GameController::class, 'update'])->name('game.upd
 
 // GamePlayer
 
-Route::get('/game/player', [GamePlayerController::class, 'showCreateForm'])->name('game.player.create');
+// Route::get('/game/player', [GamePlayerController::class, 'showCreateForm'])->name('game.player.create');
 Route::get('/game/{game}/player', [GamePlayerController::class, 'showCreateFormForGame'])->name('game.player.create-for-game');
 Route::post('/game/player', [GamePlayerController::class, 'store'])->name('game.player.store');
 
 Route::get('/game/player/{player}', [GamePlayerController::class, 'showEditForm'])->name('game.player.edit');
 Route::put('/game/player/{id}', [GamePlayerController::class, 'update'])->name('game.player.update');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
