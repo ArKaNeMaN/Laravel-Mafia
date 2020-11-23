@@ -3,7 +3,7 @@
 
 @section('content')
     <h2>Данные:</h2>
-    <ul class="list-group col-4">
+    <ul class="list-group col-md-4">
         <li class="list-group-item">#{{ $player->id }}</li>
         <li class="list-group-item">Ник: {{ $player->nickname }}</li>
         <li class="list-group-item">Имя: {{ $player->name }}</li>

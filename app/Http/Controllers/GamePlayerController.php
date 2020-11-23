@@ -10,11 +10,11 @@ use App\Models\Game;
 class GamePlayerController extends Controller
 {
     public function showCreateFormForGame(Game $game){
-        return view('game/player-form', ['game' => $game]);
+        return view('game/player/form', ['game' => $game]);
     }
 
     public function showCreateForm(Request $request){
-        return view('game/player-form');
+        return view('game/player/form');
     }
 
     public function store(Request $request){

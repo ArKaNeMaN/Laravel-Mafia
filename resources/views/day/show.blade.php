@@ -2,8 +2,12 @@
 @section('title', 'Игровой день #'.$day->id)
 
 @section('content')
-    <h2>Дата:</h2>
-    <h4>{{ $day->day_date }}</h4>
+    <h2>Данные:</h2>
+    <ul class="list-group col-md-4">
+        <li class="list-group-item"><b>#</b>{{ $day->id }}</li>
+        <li class="list-group-item"><b>Дата: </b>{{ $day->day_date }}</li>
+        <li class="list-group-item"><b>Описание: </b>{{ $day->description }}</li>
+    </ul>
     <br>
     <h2>Игры:</h2>
     @include('game/table', ['games' => $day->games])

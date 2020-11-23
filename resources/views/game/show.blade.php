@@ -3,7 +3,7 @@
 
 @section('content')
     <h2>Данные:</h2>
-    <ul class="list-group col-4">
+    <ul class="list-group col-md-4">
         <li class="list-group-item"><b>#</b>{{ $game->id }}</li>
         <li class="list-group-item"><b>Игровой день:</b> <a href="{{ route('day.show', ['day' => $game->day]) }}">{{ $game->day->day_date }}</a></li>
         <li class="list-group-item"><b>Ведущий:</b> <a href="{{ route('player.show', ['player' => $game->leader]) }}">{{ $game->leader->nickname }}</a></li>

@@ -6,7 +6,7 @@
 <h2>Система учёта игр в `Мафию`.</h2>
 <p>
     Эта штука может вести учёт следующих данных:
-    <ul class="list-group col-4">
+    <ul class="list-group col-md-4">
         <li class="list-group-item"><a href="{{ route('day.show-list') }}">Игровые дни</a></li>
         <li class="list-group-item"><a href="{{ route('player.show-list') }}">Игроки</a></li>
         <li class="list-group-item">Турниры</li>
