@@ -2,7 +2,7 @@
 @section('title', 'Игрок '.$player->nickname)
 
 @section('content')
-    <h3>Данные:</h3>
+    <h2>Данные:</h2>
     <ul class="list-group col-4">
         <li class="list-group-item">#{{ $player->id }}</li>
         <li class="list-group-item">Ник: {{ $player->nickname }}</li>
@@ -10,7 +10,6 @@
         <li class="list-group-item">Год рождения: {{ $player->birth_year }}</li>
     </ul>
     <br>
-    @component('player/games', ['games' => $player->games()])
-        <h3>Игры:</h3>
-    @endcomponent
+    <h2>Игры:</h2>
+    @include('game/table', ['games' => $player->games()])
 @endsection

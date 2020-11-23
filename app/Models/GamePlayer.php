@@ -16,6 +16,8 @@ class GamePlayer extends Model
         'don' => 'black_win',
     ];
 
+    const ROLES = ['red', 'black', 'sheriff', 'don'];
+
     /**
      * The table associated with the model.
      *

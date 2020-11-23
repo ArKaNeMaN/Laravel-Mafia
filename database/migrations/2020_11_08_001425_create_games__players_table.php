@@ -26,7 +26,7 @@ class CreateGamesPlayersTable extends Migration
             $table->foreign('helper_id')->references('id')->on('players');
 
             $table->integer('ingame_player_id')->default(0);
-            $table->enum('role', ['black', 'red', 'don', 'sheriff'])->default('red');
+            $table->enum('role', App\Models\GamePlayer::ROLES)->default('red');
             $table->tinyInteger('fouls')->default(0);
             $table->boolean('is_removed')->default(false);
             $table->double('score')->default(0.0);

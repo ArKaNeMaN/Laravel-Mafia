@@ -20,7 +20,7 @@ use App\Models\GamePlayer;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -37,17 +37,40 @@ Route::get('/player/{player}/games', function (Player $player) {
     return response()->json($player->games(), 200);
 });
 
+
+// Game
+
 Route::get('/game/{game}', function (Game $game) {
     return response()->json($game, 200);
 });
 
-Route::get('/game-player/{gamePlayer}', function (GamePlayer $gamePlayer) {
+Route::get('/game/{game}/players', function (Game $game) {
+    return response()->json($game->players, 200);
+});
+
+Route::get('/game/{game}/player/{ingame_id}', function (Game $game, $ingame_id) {
+    return response()->json($game->players->where('ingame_player_id', $ingame_id)->first(), 200);
+});
+
+Route::get('/game/{game}/votings', function (Game $game) {
+    return response()->json($game->votings, 200);
+});
+
+Route::get('/game/{game}/voting/{ingame_id}', function (Game $game, $ingame_id) {
+    return response()->json($game->votings->where('ingame_id', $ingame_id)->first(), 200);
+});
+
+Route::get('/game/player/{gamePlayer}', function (GamePlayer $gamePlayer) {
     return response()->json($gamePlayer, 200);
 });
+
+// Day
 
 Route::get('/day/{day}', function (Day $day) {
     return response()->json($day, 200);
 });
+
+// Tournament
 
 Route::get('/tournament/{tournament}', function (Tournament $tournament) {
     return response()->json($tournament, 200);

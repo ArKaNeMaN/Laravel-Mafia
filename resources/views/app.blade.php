@@ -6,6 +6,9 @@
 
         <title>Мафия | @yield('title')</title>
 
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="{{ asset('js/app.js') }}"></script>
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
@@ -13,6 +16,7 @@
     </head>
     <body>
         <div class="container">
+            {{-- @include('navigation-dropdown') --}}
             <h1 style="text-align: center;">@yield('title')</h1>
             <br>
             @yield('content')
