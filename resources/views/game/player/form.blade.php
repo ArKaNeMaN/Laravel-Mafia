@@ -87,7 +87,7 @@
 
         <div class="form-group">
             {!! Form::label('is_removed', 'Был ли удалён') !!}
-            {!! Form::select('is_removed', ['false' => 'Нет', 'true' => 'Да'], null, ['class' => 'form-control']) !!}
+            {!! Form::select('is_removed', [false => 'Нет', true => 'Да'], null, ['class' => 'form-control']) !!}
             {{-- {!! Form::checkbox('is_removed', 'true', null, ['class' => 'form-check-input']) !!} --}}
             {{-- {!! Form::number('is_removed', null, ['class' => 'form-control', 'min' => '0']) !!} --}}
             @error('is_removed')
