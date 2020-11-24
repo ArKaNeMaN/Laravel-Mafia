@@ -22,7 +22,10 @@ class CheckRole
             if(!Auth::guest())
                 return redirect(route('home'));
         }
-        elseif(Auth::user()->role != $role)
+        elseif(
+            !Auth::check()
+            || Auth::user()->role != $role
+        )
             return redirect(route('home'));
 
         return $next($request);
