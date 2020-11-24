@@ -13,19 +13,6 @@
         @yield('styles')
     </head>
     <body>
-        @section('navbar.post')
-            @parent
-            <li class="nav-item">
-                <span class="navbar-text px-3">|</span>
-            </li>
-            @auth
-                @include('navbar.item', ['name' => 'Аккаунт', 'route' => 'user.acc'])
-                @include('navbar.item', ['name' => 'Выйти', 'route' => 'user.logout'])
-            @endauth
-            @guest
-                @include('navbar.item', ['name' => 'Войти', 'route' => 'user.login'])
-            @endguest
-        @endsection
         @include('navbar/main')
         <br>
         <div class="container">
