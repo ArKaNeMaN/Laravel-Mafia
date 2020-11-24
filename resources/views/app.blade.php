@@ -7,7 +7,8 @@
         <title>Мафия | @yield('title')</title>
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
         @yield('styles')
     </head>
