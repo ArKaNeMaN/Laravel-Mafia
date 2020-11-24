@@ -13,6 +13,8 @@ use App\Http\Controllers\DayController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GamePlayerController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,22 +31,33 @@ use App\Http\Controllers\GamePlayerController;
 
 Route::get('/', function () {
     return view('home');
+})->name('home');
+
+// User
+
+Route::get('/user/login', [AuthController::class, 'showLoginForm'])->name('user.login-form');
+Route::post('/user/login', [AuthController::class, 'logIn'])->name('user.login');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/user/logout', [AuthController::class, 'logOut'])->name('user.logout');
+
+    Route::get('/user', [UserController::class, 'showAccount'])->name('user.acc');
 });
 
-// Admin
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/game', [GameController::class, 'showCreateForm'])->name('game.create');
+    Route::post('/game', [GameController::class, 'store'])->name('game.store');
 
-Route::get('/game', [GameController::class, 'showCreateForm'])->name('game.create');
-Route::post('/game', [GameController::class, 'store'])->name('game.store');
-
-Route::get('/game/{game}/edit', [GameController::class, 'showEditForm'])->name('game.edit');
-Route::put('/game/{id}/edit', [GameController::class, 'update'])->name('game.update');
+    Route::get('/game/{game}/edit', [GameController::class, 'showEditForm'])->name('game.edit');
+    Route::put('/game/{id}/edit', [GameController::class, 'update'])->name('game.update');
 
 
-Route::get('/game/{game}/player', [GamePlayerController::class, 'showCreateFormForGame'])->name('game.player.create-for-game');
-Route::post('/game/player', [GamePlayerController::class, 'store'])->name('game.player.store');
+    Route::get('/game/{game}/player', [GamePlayerController::class, 'showCreateFormForGame'])->name('game.player.create-for-game');
+    Route::post('/game/player', [GamePlayerController::class, 'store'])->name('game.player.store');
 
-Route::get('/game/player/{player}', [GamePlayerController::class, 'showEditForm'])->name('game.player.edit');
-Route::put('/game/player/{id}', [GamePlayerController::class, 'update'])->name('game.player.update');
+    Route::get('/game/player/{player}', [GamePlayerController::class, 'showEditForm'])->name('game.player.edit');
+    Route::put('/game/player/{id}', [GamePlayerController::class, 'update'])->name('game.player.update');
+});
 
 // Day
 

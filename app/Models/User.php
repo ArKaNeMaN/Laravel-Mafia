@@ -14,9 +14,14 @@ class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
+    //use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    //use TwoFactorAuthenticatable;
+
+    const ROLES = [
+        'admin',
+        'user',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -24,9 +29,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'login',
         'email',
         'password',
+        'role',
     ];
 
     /**
