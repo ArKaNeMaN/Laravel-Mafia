@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/';
 
     /**
      * The controller namespace for the application.
@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('gamePlayer', \App\Models\GamePlayer::class);
         Route::model('tournament', \App\Models\Tournament::class);
         Route::model('day', \App\Models\Day::class);
+        Route::model('user', \App\Models\User::class);
 
         $this->configureRateLimiting();
 
