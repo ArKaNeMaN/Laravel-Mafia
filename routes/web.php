@@ -59,6 +59,13 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () 
     Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
 
 
+    Route::get('player', [PlayerController::class, 'showCreateForm'])->name('player.create');
+    Route::post('player', [PlayerController::class, 'store'])->name('player.store');
+
+    Route::get('player/{player}/edit', [PlayerController::class, 'showEditForm'])->name('player.edit');
+    Route::put('player/{id}/edit', [PlayerController::class, 'update'])->name('player.update');
+
+
     Route::get('game', [GameController::class, 'showCreateForm'])->name('game.create');
     Route::post('game', [GameController::class, 'store'])->name('game.store');
 
