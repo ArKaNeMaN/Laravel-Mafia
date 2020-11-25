@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('helper_id', 'Индекс помошника') !!}
+            {!! Form::label('helper_id', 'Индекс консильери') !!}
             {!! Form::number('helper_id', null, ['class' => 'form-control']) !!}
             @error('helper_id')
                 <div class="text-danger">{{ $message }}</div>
