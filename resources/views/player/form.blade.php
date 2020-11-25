@@ -37,7 +37,7 @@
 
         <div class="form-group">
             {!! Form::label('birth_year', 'Год рождения') !!}
-            {!! Form::selectRange('birth_year', 1900, date('Y')), null, ['class' => 'form-control']) !!}
+            {!! Form::selectRange('birth_year', 1900, date('Y'), null, ['class' => 'form-control']) !!}
             @error('birth_year')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
