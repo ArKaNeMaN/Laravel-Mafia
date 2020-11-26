@@ -18,7 +18,11 @@
                 @endempty
                 <td>{{ $v->ingame_player_id }}</td>
                 <td><a href="{{ route('player.show', ['player' => $v->player]) }}">{{ $v->player->nickname }}</a></td>
-                <td><a href="{{ route('player.show', ['player' => $v->helper]) }}">{{ $v->helper->nickname }}</a></td>
+                @if ($v->helper)
+                    <td><a href="{{ route('player.show', ['player' => $v->helper]) }}">{{ $v->helper->nickname }}</a></td>
+                @else
+                    <td>-</td>
+                @endif
                 <td>{{ __('mafia.role-'.$v->role) }}</td>
                 <td>{{ $v->fouls }}</td>
                 <td>{{ $v->is_removed ? 'Да' : 'Нет' }}</td>

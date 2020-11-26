@@ -11,15 +11,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($players as $p)
+        @foreach ($users as $u)
             <tr>
-                <td scope="row">{{ $p->id }}</td>
-                <td><a href="{{ route('player.show', ['player' => $p]) }}">{{ $p->nickname }}</a></td>
-                <td>{{ $p->name }}</td>
-                <td>{{ $p->birth_year }}</td>
+                <td scope="row">{{ $u->id }}</td>
+                <td>{{ $u->login }}</td>
+                <td>{{ $u->email }}</td>
+                <td>{{ __('user.role-'.$u->role) }}</td>
                 @role('admin')
                 <td>
-                    <a href="{{ route('player.edit-form', ['player' => $p]) }}">Изменить</a>
+                    <a href="{{ route('user.edit-form', ['user' => $u]) }}">Изменить</a>
                 </td>
                 @endrole
             </tr>

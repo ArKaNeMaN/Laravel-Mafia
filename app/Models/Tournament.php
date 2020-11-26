@@ -25,6 +25,6 @@ class Tournament extends Model
 
     public function games()
     {
-        return $this->belongsTo('App\Models\TournamentGame', 'tournament_id');
+        return $this->hasMany(\App\Models\Game::class, 'tournament_id');
     }
 }

@@ -5,6 +5,9 @@
             <th>Дата</th>
             <th>Заметки</th>
             <th>Кол-во игр</th>
+            @role('admin')
+            <th></th>
+            @endrole
         </tr>
     </thead>
     <tbody>
@@ -14,6 +17,11 @@
                 <td><a href="{{ route('day.show', ['day' => $d]) }}">{{ $d->day_date }}</a></td>
                 <td  style="width: 50%;">{{ $d->description }}</td>
                 <td>{{ $d->games->count() }}</td>
+                @role('admin')
+                <td>
+                    <a href="{{ route('day.edit-form', ['day' => $d]) }}">Изменить</a>
+                </td>
+                @endrole
             </tr>
         @endforeach
     </tbody>

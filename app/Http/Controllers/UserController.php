@@ -47,6 +47,7 @@ class UserController extends Controller
 
     public function showCreateForm(){
         $this->middleware('role:admin');
+        $request->flash();
         return view('user.form');
     }
 

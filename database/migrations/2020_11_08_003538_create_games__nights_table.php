@@ -21,15 +21,15 @@ class CreateGamesNightsTable extends Migration
 
             $table->integer('ingame_id');
 
-            $table->foreignId('killed_id');
+            $table->foreignId('killed_id')->nullable();
             $table->foreign('killed_id')->references('id')->on('games__players');
 
-            $table->foreignId('checked_don_id');
+            $table->foreignId('checked_don_id')->nullable();
             $table->foreign('checked_don_id')->references('id')->on('games__players');
 
-            $table->foreignId('checked_sheriff_id');
+            $table->foreignId('checked_sheriff_id')->nullable();
             $table->foreign('checked_sheriff_id')->references('id')->on('games__players');
-            
+
             $table->timestamps();
         });
     }

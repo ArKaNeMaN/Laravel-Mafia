@@ -19,6 +19,9 @@ class CreateGamesTable extends Migration
             $table->foreignId('day_id');
             $table->foreign('day_id')->references('id')->on('days');
 
+            $table->foreignId('tournament_id')->nullable();
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
+
             $table->foreignId('leader_id');
             $table->foreign('leader_id')->references('id')->on('players');
 
@@ -30,7 +33,7 @@ class CreateGamesTable extends Migration
 
             $table->enum('result', [App\Models\Game::RESULTS]);
 
-            $table->string('description', 256)->default('');
+            $table->string('description', 256)->nullable();
 
             $table->timestamps();
         });

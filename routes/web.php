@@ -15,6 +15,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\GamePlayerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TournamentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,68 +30,96 @@ use App\Http\Controllers\UserController;
 
 // /
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', function () {return view('home');})->name('home');
 
-// User
+Route::group(['middleware' => ['role:any'], 'prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('/logout', 'AuthController@logOut')->name('logout');
 
-Route::get('/user/login', [AuthController::class, 'showLoginForm'])->name('user.login-form')->name('login');
-Route::post('/user/login', [AuthController::class, 'logIn'])->name('user.login');
+    Route::get('/', 'UserController@showAccount')->name('acc');
+    Route::get('/pass', 'UserController@showPassForm')->name('pass-form');
+    Route::put('/pass', 'UserController@changePassword')->name('update-pass');
+});
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/user/logout', [AuthController::class, 'logOut'])->name('user.logout');
-
-    Route::get('/user', [UserController::class, 'showAccount'])->name('user.acc');
-    Route::get('/user/pass', [UserController::class, 'showPassForm'])->name('user.pass-form');
-    Route::put('/user/pass', [UserController::class, 'changePassword'])->name('user.update-pass');
+Route::group(['middleware' => ['role:guest'], 'prefix' => 'user'], function () {
+    Route::get('/login', 'AuthController@showLoginForm')->name('login');
+    Route::post('/login', 'AuthController@logIn')->name('user.login');
 });
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
     Route::get('/', function(){return view('admin.panel');})->name('admin.panel');
 
+    Route::get('users', 'UserController@showList')->name('user.show-list');
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('/', 'UserController@showCreateForm')->name('create-form');
+        Route::get('/{user}', 'UserController@showEditForm')->name('edit-form');
 
-    Route::get('users', [UserController::class, 'showList'])->name('user.show-list');
+        Route::post('/', 'UserController@store')->name('store');
+        Route::put('/{id}', 'UserController@update')->name('update');
+    });
 
-    Route::get('user', [UserController::class, 'showCreateForm'])->name('user.create-form');
-    Route::post('user', [UserController::class, 'store'])->name('user.store');
+    Route::group(['prefix' => 'day', 'as' => 'day.'], function () {
+        Route::get('/', 'DayController@showCreateForm')->name('create-form');
+        Route::get('/{day}', 'DayController@showEditForm')->name('edit-form');
 
-    Route::get('user/{user}', [UserController::class, 'showEditForm'])->name('user.edit-form');
-    Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::post('/', 'DayController@store')->name('store');
+        Route::put('/{id}', 'DayController@update')->name('update');
+        Route::delete('/{id}', 'DayController@delete')->name('delete');
+    });
 
+    Route::group(['prefix' => 'tournament', 'as' => 'tournament.'], function () {
+        Route::get('/', 'TournamentController@showCreateForm')->name('create-form');
+        Route::get('/{tournament}', 'TournamentController@showEditForm')->name('edit-form');
 
-    Route::get('player', [PlayerController::class, 'showCreateForm'])->name('player.create');
-    Route::post('player', [PlayerController::class, 'store'])->name('player.store');
+        Route::post('/', 'TournamentController@store')->name('store');
+        Route::put('/{id}', 'TournamentController@update')->name('update');
+        Route::delete('/{id}', 'TournamentController@delete')->name('delete');
+    });
 
-    Route::get('player/{player}/edit', [PlayerController::class, 'showEditForm'])->name('player.edit');
-    Route::put('player/{id}/edit', [PlayerController::class, 'update'])->name('player.update');
+    Route::group(['prefix' => 'player', 'as' => 'player.'], function () {
+        Route::get('/', 'PlayerController@showCreateForm')->name('create-form');
+        Route::get('/{player}', 'PlayerController@showEditForm')->name('edit-form');
 
+        Route::post('/', 'PlayerController@store')->name('store');
+        Route::put('/{id}', 'PlayerController@update')->name('update');
+        Route::delete('/{id}', 'PlayerController@delete')->name('delete');
+    });
 
-    Route::get('game', [GameController::class, 'showCreateForm'])->name('game.create');
-    Route::post('game', [GameController::class, 'store'])->name('game.store');
+    Route::group(['prefix' => 'game', 'as' => 'game.'], function () {
+        Route::get('/', 'GameController@showCreateForm')->name('create-form');
+        Route::get('/{game}', 'GameController@showEditForm')->name('edit-form');
 
-    Route::get('game/{game}/edit', [GameController::class, 'showEditForm'])->name('game.edit');
-    Route::put('game/{id}/edit', [GameController::class, 'update'])->name('game.update');
+        Route::post('/', 'GameController@store')->name('store');
+        Route::put('/{id}', 'GameController@update')->name('update');
+        Route::delete('/{id}', 'GameController@delete')->name('delete');
+    });
 
+    Route::group(['prefix' => 'gplayer', 'as' => 'game.player.'], function () {
+        Route::get('/', 'GamePlayerController@showCreateForm')->name('create-form');
+        Route::get('/{gPlayer}', 'GamePlayerController@showEditForm')->name('edit-form');
 
-    Route::get('game/{game}/player', [GamePlayerController::class, 'showCreateFormForGame'])->name('game.player.create-for-game');
-    Route::post('game/player', [GamePlayerController::class, 'store'])->name('game.player.store');
+        Route::post('.', 'GamePlayerController@store')->name('store');
+        Route::put('/{id}', 'GamePlayerController@update')->name('update');
+        Route::delete('/{id}', 'GamePlayerController@delete')->name('delete');
+    });
 
-    Route::get('game/player/{player}', [GamePlayerController::class, 'showEditForm'])->name('game.player.edit');
-    Route::put('game/player/{id}', [GamePlayerController::class, 'update'])->name('game.player.update');
 });
 
-// Day
+Route::group(['as' => 'day.'], function () {
+    Route::get('/day/{day}', 'DayController@show')->name('show');
+    Route::get('/days', 'DayController@showList')->name('show-list');
+});
 
-Route::get('/day/{day}', [DayController::class, 'show'])->name('day.show');
-Route::get('/days', [DayController::class, 'showList'])->name('day.show-list');
+Route::group(['as' => 'tournament.'], function () {
+    Route::get('/tournament/{tournament}', 'TournamentController@show')->name('show');
+    Route::get('/tournaments', 'TournamentController@showList')->name('show-list');
+});
 
-// Player
+Route::group(['as' => 'player.'], function () {
+    Route::get('/player/{player}', 'PlayerController@show')->name('show');
+    Route::get('/players', 'PlayerController@showList')->name('show-list');
+});
 
-Route::get('/player/{player}', [PlayerController::class, 'show'])->name('player.show');
-Route::get('/players', [PlayerController::class, 'showList'])->name('player.show-list');
-
-// Game
-
-Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
-Route::get('/games', [GameController::class, 'showList'])->name('game.show-list');
+Route::group(['as' => 'game.'], function () {
+    Route::get('/game/{game}', 'GameController@show')->name('show');
+    Route::get('/games', 'GameController@showList')->name('show-list');
+});

@@ -16,10 +16,15 @@ class PlayerController extends Controller
         return view('player/show-list', ['players' => $players]);
     }
 
-
     public function showCreateForm(Request $request){
+        $request->flash();
         return view('player/form');
     }
+
+    public function showEditForm(Player $player){
+        return view('player/form', ['player' => $player]);
+    }
+
 
     public function store(Request $request){
         $this->validate($request, $this->rules());
@@ -27,16 +32,17 @@ class PlayerController extends Controller
         return back()->with('success', "Игрок #{$player->id} создан.");
     }
 
-
-    public function showEditForm(Player $player){
-        return view('player/form', ['player' => $player]);
-    }
-
     public function update(Request $request, $id){
         $this->validate($request, $this->rules());
         $player = Player::findOrFail($id);
         $player->fill($request->all())->save();
         return back()->with('success', "Игрок #{$player->id} обновлён.");
+    }
+
+    public function delete(Request $request, $id){
+        $player = Player::findOrFail($id);
+
+        return redirect(route('player.show-list'));
     }
 
     public function rules(){

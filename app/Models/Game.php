@@ -37,6 +37,11 @@ class Game extends Model
         return $this->belongsTo(\App\Models\Day::class, 'day_id');
     }
 
+    public function tournament()
+    {
+        return $this->belongsTo(\App\Models\Tournament::class, 'tournament_id');
+    }
+
     public function leader()
     {
         return $this->belongsTo(\App\Models\Player::class, 'leader_id');

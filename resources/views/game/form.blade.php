@@ -30,6 +30,14 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('tournament_id', 'Индекс турнира') !!}
+            {!! Form::number('tournament_id', null, ['class' => 'form-control']) !!}
+            @error('tournament_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
             {!! Form::label('leader_id', 'Индекс ведущего игрока') !!}
             {!! Form::number('leader_id', null, ['class' => 'form-control']) !!}
             @error('leader_id')

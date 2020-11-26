@@ -17,32 +17,38 @@ class GameController extends Controller
         return view('game/show-list', ['games' => $games]);
     }
 
-
     public function showCreateForm(Request $request){
+        $request->flash();
         return view('game/form');
     }
-
-    public function store(Request $request){
-        $this->validate($request, $this->rules());
-        $game = Game::create($request->all());
-        return back()->with('success', "Игра #{$game->id} создана");
-    }
-
 
     public function showEditForm(Game $game){
         return view('game/form', ['game' => $game]);
     }
 
+
+    public function store(Request $request){
+        $this->validate($request, $this->rules());
+        $game = Game::create($request->all());
+        return back()->with('success', "Игра #{$game->id} создана.");
+    }
+
     public function update(Request $request, $id){
         $this->validate($request, $this->rules());
-        $game = Game::findOrFail($id);
-        $game->fill($request->all())->save();
-        return back()->with('success', "Игра #{$game->id} обновлена");
+        Game::findOrFail($id)->fill($request->all())->save();
+        return back()->with('success', "Игра #{$id} обновлена.");
+    }
+
+    public function delete(Request $request, $id){
+        $this->validate($request, $this->rules());
+        Game::findOrFail($id)->delete();
+        return back()->with('success', "Игра #{$id} удалена.");
     }
 
     public function rules(){
         return [
             'day_id' => ['required', 'exists:App\Models\Day,id'],
+            'tournament_id' => ['nullable', 'exists:App\Models\Tournament,id'],
             'leader_id' => ['required', 'exists:App\Models\Player,id'],
             'best_red_id' => ['nullable', 'exists:App\Models\Player,id'],
             'best_black_id' => ['nullable', 'exists:App\Models\Player,id'],

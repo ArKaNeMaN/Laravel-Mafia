@@ -7,9 +7,9 @@
 <p>
     Эта штука может вести учёт следующих данных:
     <ul class="list-group col-md-4">
+        <li class="list-group-item"><a href="{{ route('tournament.show-list') }}">Турниры</a></li>
         <li class="list-group-item"><a href="{{ route('day.show-list') }}">Игровые дни</a></li>
         <li class="list-group-item"><a href="{{ route('player.show-list') }}">Игроки</a></li>
-        <li class="list-group-item">Турниры</li>
         <li class="list-group-item"><a href="{{ route('game.show-list') }}">Игры</a></li>
         <li class="list-group-item">Голосования</li>
         <li class="list-group-item">Ночи</li>

@@ -11,5 +11,5 @@
     </ul>
     <br>
     <h2>Игры:</h2>
-    @include('game/table', ['games' => $player->games()])
+    @include('game.table', ['games' => $player->games()])
 @endsection

@@ -9,38 +9,35 @@ use App\Models\Game;
 
 class GamePlayerController extends Controller
 {
-    public function showCreateFormForGame(Game $game){
-        return view('game/player/form', ['game' => $game]);
+    public function showCreateForm(Request $request){
+        $request->flash();
+        return view('game.player.form');
     }
 
-    public function showCreateForm(Request $request){
-        return view('game/player/form');
+    public function showEditForm(GamePlayer $gPlayer){
+        return view('game.player.form', ['player' => $gPlayer]);
     }
+
 
     public function store(Request $request){
         $this->validate($request, $this->rules());
-        $player = GamePlayer::create($request->all());
-        return back()->with('success', "Участник #{$player->id} игры #{$request->game_id} успешно создан.");
-    }
-
-
-    public function showEditForm(GamePlayer $player){
-        return view('game/player-form', ['player' => $player]);
+        $gPlayer = GamePlayer::create($request->all());
+        return back()->with('success', "Участник #{$gPlayer->id} игры #{$request->game_id} успешно создан.");
     }
 
     public function update(Request $request, $id){
         $this->validate($request, $this->rules());
-        $player = GamePlayer::findOrFail($id);
-        $player->fill($request->all())->save();
-        return back()->with('success', "Участник #{$id} игры #{$player->game->id} успешно обновлён.");
+        $gPlayer = GamePlayer::findOrFail($id);
+        $gPlayer->fill($request->all())->save();
+        return back()->with('success', "Участник #{$id} игры #{$gPlayer->game->id} успешно обновлён.");
     }
 
 
     public function delete(Request $request, $id){
-        $player = GamePlayer::findOrFail($id);
-        $game = $player->game;
-        $player->delete();
-        return redirect('game.show', ['game' => $game])->with('success', "Участник #{$id} игры #{$game->id} успешно удалён.");
+        $gPlayer = GamePlayer::findOrFail($id);
+        $game = $gPlayer->game;
+        $gPlayer->delete();
+        return redirect(route('game.show', ['game' => $game]))->with('success', "Участник #{$id} игры #{$game->id} успешно удалён.");
     }
 
 

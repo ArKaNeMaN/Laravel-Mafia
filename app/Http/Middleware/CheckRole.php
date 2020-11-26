@@ -18,15 +18,24 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if($role == 'guest'){
-            if(!Auth::guest())
-                return redirect(route('home'));
+        switch ($role) {
+            case 'any':
+                if(!Auth::check())
+                    return redirect(route('login'));
+            break;
+
+            case 'guest':
+                if(!Auth::guest())
+                    return redirect(route('home'));
+            break;
+
+            default:
+                if(!Auth::check())
+                    return redirect(route('login'));
+                if(Auth::user()->role != $role)
+                    return redirect(route('home'));
+            break;
         }
-        elseif(
-            !Auth::check()
-            || Auth::user()->role != $role
-        )
-            return redirect(route('home'));
 
         return $next($request);
     }

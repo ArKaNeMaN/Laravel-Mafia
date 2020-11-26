@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::model('player', \App\Models\Player::class);
         Route::model('game', \App\Models\Game::class);
-        Route::model('gamePlayer', \App\Models\GamePlayer::class);
+        Route::model('gPlayer', \App\Models\GamePlayer::class);
         Route::model('tournament', \App\Models\Tournament::class);
         Route::model('day', \App\Models\Day::class);
         Route::model('user', \App\Models\User::class);
