@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Турнир №'.$tournament->id)
+@section('breadcrumbs', Breadcrumbs::render('tournament', $tournament))
 
 @section('content')
     <h2>Данные:</h2>

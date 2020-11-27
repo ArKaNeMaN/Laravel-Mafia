@@ -2,8 +2,10 @@
 
 @if(isset($player))
     @section('title', 'Обновление игрока #'.$player->id)
+    @section('breadcrumbs', Breadcrumbs::render('player.edit', $player))
 @else
     @section('title', 'Добавление игрока')
+    @section('breadcrumbs', Breadcrumbs::render('player.create'))
 @endif
 
 @section('content')

@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Игра #'.$game->id)
+@section('breadcrumbs', Breadcrumbs::render('game', $game))
 
 @section('content')
     <h2>Данные:</h2>

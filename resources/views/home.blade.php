@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Домашняя страница')
+{{-- @section('breadcrumbs', Breadcrumbs::render('home')) --}}
 
 @section('content')
 

@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Список игроков')
+@section('breadcrumbs', Breadcrumbs::render('players'))
 
 @section('content')
 @include('player.table', ['players' => $players])

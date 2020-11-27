@@ -17,6 +17,7 @@
         @include('navbar/main')
         <br>
         <div class="container">
+            @yield('breadcrumbs')
             <h1 style="text-align: center;">@yield('title')</h1>
             <br>
             @yield('content')

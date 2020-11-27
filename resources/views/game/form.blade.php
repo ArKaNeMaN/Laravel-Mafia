@@ -1,8 +1,10 @@
 @extends('app')
 @if (isset($game))
     @section('title', 'Обновление игры #'.$game->id)
+    @section('breadcrumbs', Breadcrumbs::render('game.edit', $game))
 @else
     @section('title', 'Добавление игры')
+    @section('breadcrumbs', Breadcrumbs::render('game.create'))
 @endif
 
 

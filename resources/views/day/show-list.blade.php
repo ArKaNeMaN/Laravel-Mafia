@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Список игровых дней')
+@section('breadcrumbs', Breadcrumbs::render('days'))
 
 @section('content')
 @include('day.table', ['days' => $days])

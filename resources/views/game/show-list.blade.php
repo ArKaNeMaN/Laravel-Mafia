@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Список игр')
+@section('breadcrumbs', Breadcrumbs::render('games'))
 
 @section('content')
 @include('game/table', ['games' => $games])

@@ -1,8 +1,10 @@
 @extends('app')
 @if (isset($day))
     @section('title', 'Обновление игрового дня #'.$day->id)
+    @section('breadcrumbs', Breadcrumbs::render('day.edit', $day))
 @else
     @section('title', 'Добавление игрового дня')
+    @section('breadcrumbs', Breadcrumbs::render('day.create'))
 @endif
 
 

@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Игровой день #'.$day->id)
+@section('breadcrumbs', Breadcrumbs::render('day', $day))
 
 @section('content')
     <h2>Данные:</h2>

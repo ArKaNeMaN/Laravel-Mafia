@@ -1,5 +1,6 @@
 @extends('app')
 @section('title', 'Список турниров')
+@section('breadcrumbs', Breadcrumbs::render('tournaments'))
 
 @section('content')
     @include('tournament.table', ['tournaments' => $tournaments])

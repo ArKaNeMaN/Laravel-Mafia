@@ -2,8 +2,10 @@
 
 @if(isset($tournament))
     @section('title', 'Обновление турнира #'.$tournament->id)
+    @section('breadcrumbs', Breadcrumbs::render('tournament.edit', $tournament))
 @else
     @section('title', 'Добавление турнира')
+    @section('breadcrumbs', Breadcrumbs::render('tournament.create'))
 @endif
 
 @section('content')
