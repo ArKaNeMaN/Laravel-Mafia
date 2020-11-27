@@ -3,7 +3,7 @@
         <tr>
             <th>#</th>
             <th>Описание</th>
-            <th>Кол-во игр</th>
+            <th class="text-nowrap">Кол-во игр</th>
             @role('admin')
             <th></th>
             @endrole
