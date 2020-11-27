@@ -14,7 +14,7 @@
         @yield('styles')
     </head>
     <body>
-        @include('navbar/main')
+        @include('navbar.main')
         <br>
         <div class="container">
             @yield('breadcrumbs')

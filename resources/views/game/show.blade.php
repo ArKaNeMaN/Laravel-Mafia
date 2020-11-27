@@ -3,7 +3,12 @@
 @section('breadcrumbs', Breadcrumbs::render('game', $game))
 
 @section('content')
-    <h2>Данные:</h2>
+    <h2>
+        Данные:
+        @role('admin')
+        <a href="{{ route('game.edit-form', $game) }}" class="p-3"><button class="btn btn-primary">Изменить игру</button></a>
+        @endrole
+    </h2>
     <ul class="list-group col-md-4">
         <li class="list-group-item"><b>#</b>{{ $game->id }}</li>
         <li class="list-group-item"><b>Игровой день:</b> <a href="{{ route('day.show', ['day' => $game->day]) }}">{{ $game->day->day_date }}</a></li>

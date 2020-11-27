@@ -3,7 +3,12 @@
 @section('breadcrumbs', Breadcrumbs::render('tournament', $tournament))
 
 @section('content')
-    <h2>Данные:</h2>
+    <h2>
+        Данные:
+        @role('admin')
+        <a href="{{ route('tournament.edit-form', $tournament) }}" class="p-3"><button class="btn btn-primary">Изменить турнир</button></a>
+        @endrole
+    </h2>
     <ul class="list-group col-md-4">
         <li class="list-group-item"><b>#</b>{{ $tournament->id }}</li>
         <li class="list-group-item"><b>Описание:</b> {{ $tournament->description }}</li>
