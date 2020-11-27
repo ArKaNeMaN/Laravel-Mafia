@@ -45,7 +45,7 @@ class UserController extends Controller
         return view('user.acc', ['user' => Auth::user()]);
     }
 
-    public function showCreateForm(){
+    public function showCreateForm(Request $request){
         $this->middleware('role:admin');
         $request->flash();
         return view('user.form');

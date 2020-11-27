@@ -17,7 +17,7 @@ class DayController extends Controller
         return view('day.show-list', ['days' => $days]);
     }
 
-    public function showCreateForm(){
+    public function showCreateForm(Request $request){
         $request->flash();
         return view('day.form');
     }
