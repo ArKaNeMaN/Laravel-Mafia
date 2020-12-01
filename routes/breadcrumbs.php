@@ -101,7 +101,7 @@ Breadcrumbs::for('gNight.edit', function ($trail, $gNight) {
 
 Breadcrumbs::for('tournaments', function ($trail) {
     $trail->parent('home');
-    $trail->push('Игры', route('tournament.show-list'));
+    $trail->push('Турниры', route('tournament.show-list'));
 });
 
 Breadcrumbs::for('tournament.create', function ($trail) {
@@ -111,7 +111,7 @@ Breadcrumbs::for('tournament.create', function ($trail) {
 
 Breadcrumbs::for('tournament', function ($trail, $tournament) {
     $trail->parent('tournaments');
-    $trail->push('#'.$tournament->id, route('tournament.show', $tournament));
+    $trail->push('Турнир #'.$tournament->id, route('tournament.show', $tournament));
 });
 
 Breadcrumbs::for('tournament.edit', function ($trail, $tournament) {
