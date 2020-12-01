@@ -102,6 +102,15 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () 
         Route::delete('/{id}', 'GamePlayerController@delete')->name('delete');
     });
 
+    Route::group(['prefix' => 'gnight', 'as' => 'game.night.'], function () {
+        Route::get('/', 'GameNightController@showCreateForm')->name('create-form');
+        Route::get('/{gNight}', 'GameNightController@showEditForm')->name('edit-form');
+
+        Route::post('/', 'GameNightController@store')->name('store');
+        Route::put('/{id}', 'GameNightController@update')->name('update');
+        Route::delete('/{id}', 'GameNightController@delete')->name('delete');
+    });
+
 });
 
 Route::group(['as' => 'day.'], function () {
