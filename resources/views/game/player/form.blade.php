@@ -91,7 +91,13 @@
         </div>
         <br>
 
-        <input type="submit" value="Создать" class="btn btn-dark btn-block">
+        <div class="form-group">
+            @if(isset($player))
+                {!! Form::submit('Обновить', ['class' => 'btn btn-dark btn-block']) !!}
+            @else
+                {!! Form::submit('Добавить', ['class' => 'btn btn-dark btn-block']) !!}
+            @endif
+        </div>
     {!! Form::close() !!}
 
 @endsection
