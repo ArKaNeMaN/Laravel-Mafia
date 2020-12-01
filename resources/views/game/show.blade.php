@@ -47,4 +47,9 @@
             <a href="{{ route('game.night.create-form', ['game_id' => $game->id]) }}" class="p-3"><button class="btn btn-primary">Добавить ночь</button></a>
             @endrole
         </div>
+
+        <div class="col-lg-6">
+            <h2>Голосования:</h2>
+            Тут будет таблица голосований
+        </div>
 @endsection
