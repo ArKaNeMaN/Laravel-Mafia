@@ -58,7 +58,7 @@ Breadcrumbs::for('game.create', function ($trail) {
 
 Breadcrumbs::for('game', function ($trail, $game) {
     $trail->parent('games');
-    $trail->push('#'.$game->id, route('game.show', $game));
+    $trail->push('Игра #'.$game->id, route('game.show', $game));
 });
 
 Breadcrumbs::for('game.edit', function ($trail, $game) {
