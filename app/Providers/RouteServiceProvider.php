@@ -38,6 +38,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('player', \App\Models\Player::class);
         Route::model('game', \App\Models\Game::class);
         Route::model('gPlayer', \App\Models\GamePlayer::class);
+        Route::model('gNight', \App\Models\GameNight::class);
+        Route::model('gVoting', \App\Models\GameVoting::class);
         Route::model('tournament', \App\Models\Tournament::class);
         Route::model('day', \App\Models\Day::class);
         Route::model('user', \App\Models\User::class);
