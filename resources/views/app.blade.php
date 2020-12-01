@@ -16,11 +16,16 @@
     <body>
         @include('navbar.main')
         <br>
-        <div class="container">
+        <div class="container mb-5">
             @yield('breadcrumbs')
             <h1 style="text-align: center;">@yield('title')</h1>
             <br>
             @yield('content')
         </div>
+        <footer class="page-footer font-small bg-dark">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright:<a href="{{ config('app.url') }}"> Student-Kult-Mafii.ru</a>
+            </div>
+        </footer>
     </body>
 </html>
