@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use App\Models\User;
 
 class AuthController extends Controller
 {
     public function showLoginForm(Request $request){
-        $request->session()->put('afterLogin', url()->previous());
+        $prevUrl = url()->previous();
+        if(
+            $prevUrl != URL::route('login')
+            && $prevUrl != URL::route('user.login')
+        ) $request->session()->put('afterLogin', $prevUrl);
+
         $this->middleware('guest');
         return view('user/login');
     }
