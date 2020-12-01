@@ -2,8 +2,14 @@
 
 @if(isset($player))
     @section('title', 'Обновление участника игры #'.$player->game->id)
+    @section('breadcrumbs', Breadcrumbs::render('gPlayer.edit', $player))
 @else
     @section('title', 'Добавление участника игры')
+    @isset($_GET['game_id'])
+        @section('breadcrumbs', Breadcrumbs::render('gPlayer.create.forGame', $_GET['game_id']))
+    @else
+        @section('breadcrumbs', Breadcrumbs::render('gPlayer.create'))
+    @endif
 @endif
 
 @section('content')

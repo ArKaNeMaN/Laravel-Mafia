@@ -67,6 +67,22 @@ Breadcrumbs::for('game.edit', function ($trail, $game) {
 });
 
 
+Breadcrumbs::for('gPlayer.create', function ($trail) {
+    $trail->parent('games');
+    $trail->push('Добавление участника', route('game.player.create-form'));
+});
+
+Breadcrumbs::for('gPlayer.create.forGame', function ($trail, $game_id) {
+    $trail->parent('game', App\Models\Game::findOrFail($game_id));
+    $trail->push('Добавление участника', route('game.player.create-form', ['game_id' => $game_id]));
+});
+
+Breadcrumbs::for('gPlayer.edit', function ($trail, $gPlayer) {
+    $trail->parent('game', $gPlayer->game);
+    $trail->push('Редактирование участника #'.$gPlayer->ingame_player_id, route('game.player.edit-form', ['gPlayer' => $gPlayer]));
+});
+
+
 Breadcrumbs::for('tournaments', function ($trail) {
     $trail->parent('home');
     $trail->push('Игры', route('tournament.show-list'));
