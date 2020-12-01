@@ -97,7 +97,7 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () 
         Route::get('/', 'GamePlayerController@showCreateForm')->name('create-form');
         Route::get('/{gPlayer}', 'GamePlayerController@showEditForm')->name('edit-form');
 
-        Route::post('.', 'GamePlayerController@store')->name('store');
+        Route::post('/', 'GamePlayerController@store')->name('store');
         Route::put('/{id}', 'GamePlayerController@update')->name('update');
         Route::delete('/{id}', 'GamePlayerController@delete')->name('delete');
     });
