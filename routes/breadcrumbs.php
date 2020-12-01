@@ -83,6 +83,22 @@ Breadcrumbs::for('gPlayer.edit', function ($trail, $gPlayer) {
 });
 
 
+Breadcrumbs::for('gNight.create', function ($trail) {
+    $trail->parent('games');
+    $trail->push('Добавление ночи', route('game.night.create-form'));
+});
+
+Breadcrumbs::for('gNight.create.forGame', function ($trail, $game_id) {
+    $trail->parent('game', App\Models\Game::findOrFail($game_id));
+    $trail->push('Добавление ночи', route('game.night.create-form', ['game_id' => $game_id]));
+});
+
+Breadcrumbs::for('gNight.edit', function ($trail, $gNight) {
+    $trail->parent('game', $gNight->game);
+    $trail->push('Редактирование ночи #'.$gNight->ingame_id, route('game.night.edit-form', ['gNight' => $gNight]));
+});
+
+
 Breadcrumbs::for('tournaments', function ($trail) {
     $trail->parent('home');
     $trail->push('Игры', route('tournament.show-list'));

@@ -2,8 +2,14 @@
 
 @if(isset($night))
     @section('title', 'Обновление ночи для игры #'.$night->game->id)
+    @section('breadcrumbs', Breadcrumbs::render('gNight.edit', $night))
 @else
     @section('title', 'Добавление ночи')
+    @isset($_GET['game_id'])
+        @section('breadcrumbs', Breadcrumbs::render('gNight.create.forGame', $_GET['game_id']))
+    @else
+        @section('breadcrumbs', Breadcrumbs::render('gNight.create'))
+    @endif
 @endif
 
 @section('content')
