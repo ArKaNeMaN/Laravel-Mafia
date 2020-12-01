@@ -27,8 +27,11 @@
         @if ($game->bestBlack)
             <li class="list-group-item"><b>Лучший чёрный:</b> <a href="{{ route('player.show', ['player' => $game->bestBlack]) }}">{{ $game->bestBlack->nickname }}</a></li>
         @endif
+        <li class="list-group-item"><b>Ночей:</b> {{ $game->nights->count() }}</li>
+        <li class="list-group-item"><b>Голосований:</b> {{ $game->votings->count() }}</li>
     </ul>
     <br>
+
     <h2>Игроки:</h2>
     @include('game.player.table', ['players' => $game->players, 'hideGame' => '1'])
     @role('admin')
