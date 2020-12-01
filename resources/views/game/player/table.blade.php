@@ -9,6 +9,9 @@
         <th>Роль</th>
         <th>Фолы</th>
         <th>Удалён</th>
+        @role('admin')
+        <th></th>
+        @endrole
     </thead>
     <tbody>
         @foreach ($players as $v)
@@ -26,6 +29,11 @@
                 <td>{{ __('mafia.role-'.$v->role) }}</td>
                 <td>{{ $v->fouls }}</td>
                 <td>{{ $v->is_removed ? 'Да' : 'Нет' }}</td>
+                @role('admin')
+                <td>
+                    <a href="{{ route('game.player.edit-form', ['gPlayer' => $v]) }}">Изменить</a>
+                </td>
+                @endrole
             </tr>
         @endforeach
     </tbody>

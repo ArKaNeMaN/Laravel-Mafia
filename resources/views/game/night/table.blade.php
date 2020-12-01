@@ -7,6 +7,9 @@
         <th>Убит</th>
         <th>Проверен доном</th>
         <th>Проверен шерифом</th>
+        @role('admin')
+        <th></th>
+        @endrole
     </thead>
     <tbody>
         @foreach ($nights as $n)
@@ -30,6 +33,11 @@
                 @else
                     <td>-</td>
                 @endif
+                @role('admin')
+                <td>
+                    <a href="{{ route('game.night.edit-form', ['gNight' => $n]) }}">Изменить</a>
+                </td>
+                @endrole
             </tr>
         @endforeach
     </tbody>
