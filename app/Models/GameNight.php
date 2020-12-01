@@ -27,4 +27,19 @@ class GameNight extends Model
     {
         return $this->belongsTo('App\Models\Game', 'game_id');
     }
+
+    public function killed()
+    {
+        return $this->belongsTo('App\Models\GamePlayer', 'killed_id');
+    }
+
+    public function checkedDon()
+    {
+        return $this->belongsTo('App\Models\GamePlayer', 'checked_don_id');
+    }
+
+    public function checkedSheriff()
+    {
+        return $this->belongsTo('App\Models\GamePlayer', 'checked_sheriff_id');
+    }
 }
