@@ -9,7 +9,8 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLoginForm(){
+    public function showLoginForm(Request $request){
+        $request->session()->put('afterLogin', url()->previous());
         $this->middleware('guest');
         return view('user/login');
     }
@@ -30,12 +31,17 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('home'));
+        if($request->session()->has('afterLogin')){
+            $url = $request->session()->get('afterLogin');
+            $request->session()->forget('afterLogin');
+            return redirect($url);
+        }
+        else return redirect(route('home'));
     }
 
     public function logOut(Request $request){
         $this->middleware('auth');
         Auth::logout();
-        return redirect(route('home'));
+        return back();
     }
 }
