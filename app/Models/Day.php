@@ -23,9 +23,6 @@ class Day extends Model
      */
     protected $guarded = [];
 
-    /**
-     * Get the comments for the blog post.
-     */
     public function games()
     {
         return $this->hasMany('App\Models\Game', 'day_id');

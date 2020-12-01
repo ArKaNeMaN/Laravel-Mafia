@@ -23,9 +23,6 @@ class GameNight extends Model
      */
     protected $guarded = [];
 
-    /**
-     * Get the comments for the blog post.
-     */
     public function game()
     {
         return $this->belongsTo('App\Models\Game', 'game_id');

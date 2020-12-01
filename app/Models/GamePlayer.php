@@ -32,13 +32,6 @@ class GamePlayer extends Model
      */
     protected $guarded = [];
 
-    /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    //protected $with = ['player'];
-
     public function game()
     {
         return $this->belongsTo(\App\Models\Game::class, 'game_id');

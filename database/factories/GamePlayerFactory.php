@@ -33,7 +33,6 @@ class GamePlayerFactory extends Factory
             'game_id' => $game->id,
             'player_id' => $player->id,
             'helper_id' => random_int(1, 25) == 1 ? Player::where('id', '!=', $player->id)->inRandomOrder()->first()->id : null,
-            //'ingame_player_id' => GamePlayer::where('game_id', $game->id)->max('ingame_player_id')+1,
             'ingame_player_id' => self::$gamesPlayersCounter[$game->id]++,
             'role' => $this->faker->randomElement(['black', 'black', 'don', 'sheriff', 'red', 'red', 'red', 'red', 'red', 'red']),
         ];

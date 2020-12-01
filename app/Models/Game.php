@@ -25,13 +25,6 @@ class Game extends Model
      */
     protected $guarded = [];
 
-    /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    //protected $with = ['players', 'nights', 'votings', 'leader'];
-
     public function day()
     {
         return $this->belongsTo(\App\Models\Day::class, 'day_id');
