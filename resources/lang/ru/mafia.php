@@ -7,5 +7,5 @@ return [
     'role-black' => 'Чёрный',
     'role-don' => 'Дон',
     'role-sheriff' => 'Шериф',
-    'mafia' => 'Мафия',
+    'mafia' => 'Mafia',
 ];
