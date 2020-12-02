@@ -6,11 +6,15 @@
 
         <title>Мафия | @yield('title')</title>
 
-        <!-- Bootstrap CSS -->
-        {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <!-- Scripts -->
+        <script src="{{ asset('js/vendor.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        @yield('scripts')
         <script src="https://kit.fontawesome.com/d5203c85d3.js" crossorigin="anonymous"></script>
 
+        <!-- Styles -->
+        <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         @yield('styles')
     </head>
     <body>
