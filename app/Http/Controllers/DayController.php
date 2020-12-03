@@ -13,7 +13,7 @@ class DayController extends Controller
     }
 
     public function showList(){
-        $days = Day::orderBy('id', 'desc')->paginate(10);
+        $days = Day::orderBy('day_date', 'desc')->paginate(10);
         return view('day.show-list', ['days' => $days]);
     }
 
