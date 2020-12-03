@@ -27,4 +27,8 @@ class Day extends Model
     {
         return $this->hasMany('App\Models\Game', 'day_id');
     }
+
+    public function getDayDateAttribute($value){
+        return date('d.m.Y', strtotime($value));
+    }
 }
