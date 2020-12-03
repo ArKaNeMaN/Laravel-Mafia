@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', 'Турнир №'.$tournament->id)
+@section('title', 'Турнир '.$tournament->name)
 @section('breadcrumbs', Breadcrumbs::render('tournament', $tournament))
 
 @section('content')
@@ -11,6 +11,7 @@
     </h2>
     <ul class="list-group col-md-4">
         <li class="list-group-item"><b>#</b>{{ $tournament->id }}</li>
+        <li class="list-group-item"><b>Название:</b> {{ $tournament->name }}</li>
         <li class="list-group-item"><b>Описание:</b> {{ $tournament->description }}</li>
     </ul>
     <br>

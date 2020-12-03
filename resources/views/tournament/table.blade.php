@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Название</th>
             <th>Описание</th>
             <th class="text-nowrap">Кол-во игр</th>
             @role('admin')
@@ -13,6 +14,7 @@
         @foreach ($tournaments as $t)
             <tr>
                 <td scope="row"><a href="{{ route('tournament.show', ['tournament' => $t]) }}">{{ $t->id }}</a></td>
+                <td>{{ $t->name }}</td>
                 <td>{{ $t->description }}</td>
                 <td>{{ $t->games->count() }}</td>
                 @role('admin')

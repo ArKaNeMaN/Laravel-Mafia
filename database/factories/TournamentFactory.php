@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Tournament;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TournamentFactory extends Factory
 {
@@ -22,6 +23,7 @@ class TournamentFactory extends Factory
     public function definition()
     {
         return [
+            'name' => Str::random(16),
             'description' => $this->faker->realText(256),
         ];
     }
