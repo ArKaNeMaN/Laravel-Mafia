@@ -27,6 +27,7 @@ class GameFactory extends Factory
     {
         return [
             'day_id' => Day::inRandomOrder()->first()->id,
+            'tournament_id' => random_int(0, 1) ? Day::inRandomOrder()->first()->id : null,
             'leader_id' => Player::inRandomOrder()->first()->id,
             'result' => $this->faker->randomElement(Game::RESULTS),
         ];
