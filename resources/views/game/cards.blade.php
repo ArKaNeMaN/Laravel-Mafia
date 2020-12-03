@@ -11,7 +11,9 @@
                 @if($g->tournament)
                     <p><b>Турнир: </b><a href="{{ route('tournament.show', ['tournament' => $g->tournament]) }}">{{ $g->tournament->name }}</a></p>
                 @endif
-                <p class="card-text">{{ $g->description }}</p>
+                @if(!empty($g->description))
+                <p><b>Описание: </b>{{ $g->description }}</p>
+                @endif
             </div>
             <div class="mr-md-5">
                 <p><b>Ведущий: </b><a href="{{ route('player.show', ['player' => $g->leader]) }}">{{ $g->leader->nickname }}</a></p>
