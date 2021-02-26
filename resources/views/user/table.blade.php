@@ -3,8 +3,8 @@
         <tr>
             <th>#</th>
             <th>Ник</th>
-            <th>Имя</th>
-            <th>Год рождения</th>
+            <th>Почта</th>
+            <th>Роль</th>
             @role('admin')
             <th></th>
             @endrole
