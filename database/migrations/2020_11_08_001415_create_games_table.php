@@ -30,6 +30,7 @@ class CreateGamesTable extends Migration
 
             $table->enum('result', [App\Models\Game::RESULTS]);
             $table->timestamp('date_time');
+            $table->boolean('played')->default(false);
             $table->string('description', 256)->nullable();
 
             $table->timestamps();

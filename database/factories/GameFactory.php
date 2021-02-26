@@ -29,6 +29,7 @@ class GameFactory extends Factory
             'leader_id' => Player::inRandomOrder()->first()->id,
             'result' => $this->faker->randomElement(Game::RESULTS),
             'date_time' => $this->faker->dateTime(),
+            'played' => (bool) random_int(0, 1),
         ];
     }
 
