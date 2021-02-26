@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Player;
+use App\Models\Tournament;
 use App\Models\Game;
 use App\Models\GamePlayer;
 use App\Models\GameNight;
@@ -25,7 +26,7 @@ class GameFactory extends Factory
     public function definition()
     {
         return [
-            'tournament_id' => random_int(0, 1) ? Day::inRandomOrder()->first()->id : null,
+            'tournament_id' => random_int(0, 1) ? Tournament::inRandomOrder()->first()->id : null,
             'leader_id' => Player::inRandomOrder()->first()->id,
             'result' => $this->faker->randomElement(Game::RESULTS),
             'date_time' => $this->faker->dateTime(),
