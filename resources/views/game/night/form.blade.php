@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('checked_don_id', 'Индекс игрока. проверенного доном') !!}
+            {!! Form::label('checked_don_id', 'Индекс игрока, проверенного доном') !!}
                 {!! Form::number('checked_don_id', null, ['class' => 'form-control']) !!}
             @error('checked_don_id')
                 <div class="text-danger">{{ $message }}</div>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('checked_sheriff_id', 'Индекс игрока. проверенного шерифом') !!}
+            {!! Form::label('checked_sheriff_id', 'Индекс игрока, проверенного шерифом') !!}
                 {!! Form::number('checked_sheriff_id', null, ['class' => 'form-control']) !!}
             @error('checked_sheriff_id')
                 <div class="text-danger">{{ $message }}</div>
