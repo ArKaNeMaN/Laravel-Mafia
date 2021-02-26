@@ -25,11 +25,6 @@ class Game extends Model
      */
     protected $guarded = [];
 
-    public function day()
-    {
-        return $this->belongsTo(\App\Models\Day::class, 'day_id');
-    }
-
     public function tournament()
     {
         return $this->belongsTo(\App\Models\Tournament::class, 'tournament_id');
@@ -63,5 +58,17 @@ class Game extends Model
     public function bestBlack()
     {
         return $this->belongsTo(\App\Models\Player::class, 'best_black_id');
+    }
+
+    public function getFDateAttribute(){
+        return date('d.m.Y', strtotime($this->date_time));
+    }
+
+    public function getFTimeAttribute(){
+        return date('H:i', strtotime($this->date_time));
+    }
+
+    public function getFDateTimeAttribute(){
+        return date('d.m.Y - H:i', strtotime($this->date_time));
     }
 }

@@ -7,7 +7,7 @@
         </div>
         <div class="card-body d-md-flex">
             <div class="mr-md-5">
-                <p><b>Дата: </b><a href="{{ route('day.show', ['day' => $g->day]) }}">{{ $g->day->day_date }}</a></p>
+                <p><b>Дата: </b>{{ $g->f_date_time }}</p>
                 @if($g->tournament)
                     <p><b>Турнир: </b><a href="{{ route('tournament.show', ['tournament' => $g->tournament]) }}">{{ $g->tournament->name }}</a></p>
                 @endif

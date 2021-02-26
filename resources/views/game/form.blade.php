@@ -24,14 +24,6 @@
     @endif
 
         <div class="form-group">
-            {!! Form::label('day_id', 'Индекс игрового дня') !!}
-            {!! Form::number('day_id', null, ['class' => 'form-control']) !!}
-            @error('day_id')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="form-group">
             {!! Form::label('tournament_id', 'Индекс турнира') !!}
             {!! Form::number('tournament_id', null, ['class' => 'form-control']) !!}
             @error('tournament_id')
@@ -67,6 +59,22 @@
             {!! Form::label('result', 'Результат игры', []) !!}
             {!! Form::select('result', ['red_win' => 'Победа красных', 'black_win' => 'Победа чёрных'], null, ['class' => 'form-control']) !!}
             @error('result')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('date_time', 'Дата и время игры', []) !!}
+            {!! Form::datetimeLocal('date_time', null, ['class' => 'form-control']) !!}
+            @error('date_time')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('played', 'Сыграна ли игра', []) !!}
+            {!! Form::select('played', [false => 'Нет', true => 'Да'], null, ['class' => 'form-control']) !!}
+            @error('played')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>

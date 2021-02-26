@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Player;
-use App\Models\Day;
 use App\Models\Tournament;
 use App\Models\Game;
 use App\Models\GamePlayer;
@@ -63,12 +62,6 @@ Route::get('/game/{game}/voting/{ingame_id}', function (Game $game, $ingame_id) 
 
 Route::get('/game/player/{gamePlayer}', function (GamePlayer $gamePlayer) {
     return response()->json($gamePlayer, 200);
-});
-
-// Day
-
-Route::get('/day/{day}', function (Day $day) {
-    return response()->json($day, 200);
 });
 
 // Tournament

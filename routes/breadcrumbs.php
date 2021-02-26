@@ -25,27 +25,6 @@ Breadcrumbs::for('player.edit', function ($trail, $player) {
 });
 
 
-Breadcrumbs::for('days', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Игровые дни', route('day.show-list'));
-});
-
-Breadcrumbs::for('day.create', function ($trail) {
-    $trail->parent('days');
-    $trail->push('Создание', route('day.create-form'));
-});
-
-Breadcrumbs::for('day', function ($trail, $day) {
-    $trail->parent('days');
-    $trail->push($day->day_date, route('day.show', $day));
-});
-
-Breadcrumbs::for('day.edit', function ($trail, $day) {
-    $trail->parent('day', $day);
-    $trail->push('Редактирование', route('day.edit-form', $day));
-});
-
-
 Breadcrumbs::for('games', function ($trail) {
     $trail->parent('home');
     $trail->push('Игры', route('game.show-list'));

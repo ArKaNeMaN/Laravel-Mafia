@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>День</th>
+            <th>Дата</th>
             <th>Турнир</th>
             <th>Ведущий</th>
             <th>Лучший красный</th>
@@ -18,7 +18,7 @@
         @foreach ($games as $g)
             <tr>
                 <td scope="row"><a href="{{ route('game.show', ['game' => $g]) }}">{{ $g->id }}</a></td>
-                <td><a href="{{ route('day.show', ['day' => $g->day]) }}">{{ $g->day->day_date }}</a></td>
+                <td>{{ $g->f_date_time }}</td>
                 @if($g->tournament)
                     <td><a href="{{ route('tournament.show', ['tournament' => $g->tournament]) }}">{{ $g->tournament->id }}</a></td>
                 @else

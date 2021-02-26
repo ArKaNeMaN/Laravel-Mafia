@@ -11,7 +11,7 @@
     </h2>
     <ul class="list-group col-md-4">
         <li class="list-group-item"><b>#</b>{{ $game->id }}</li>
-        <li class="list-group-item"><b>Игровой день:</b> <a href="{{ route('day.show', ['day' => $game->day]) }}">{{ $game->day->day_date }}</a></li>
+        <li class="list-group-item"><b>Дата: </b>{{ $game->f_date_time }}</li>
         <li class="list-group-item">
             <b>Турнир: </b>
             @if ($game->tournament)

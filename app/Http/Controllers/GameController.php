@@ -53,6 +53,7 @@ class GameController extends Controller
             'best_red_id' => ['nullable', 'exists:App\Models\Player,id'],
             'best_black_id' => ['nullable', 'exists:App\Models\Player,id'],
             'result' => ['required', Rule::in(Game::RESULTS)],
+            'date_time' => ['required', 'date'],
             'description' => ['present', 'max:256'],
         ];
     }

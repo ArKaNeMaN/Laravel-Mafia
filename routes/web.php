@@ -3,13 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Player;
-use App\Models\Day;
 use App\Models\Tournament;
 use App\Models\Game;
 use App\Models\GamePlayer;
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DayController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GamePlayerController;
@@ -57,15 +55,6 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () 
         Route::put('/{id}', 'UserController@update')->name('update');
     });
 
-    Route::group(['prefix' => 'day', 'as' => 'day.'], function () {
-        Route::get('/', 'DayController@showCreateForm')->name('create-form');
-        Route::get('/{day}', 'DayController@showEditForm')->name('edit-form');
-
-        Route::post('/', 'DayController@store')->name('store');
-        Route::put('/{id}', 'DayController@update')->name('update');
-        Route::delete('/{id}', 'DayController@delete')->name('delete');
-    });
-
     Route::group(['prefix' => 'tournament', 'as' => 'tournament.'], function () {
         Route::get('/', 'TournamentController@showCreateForm')->name('create-form');
         Route::get('/{tournament}', 'TournamentController@showEditForm')->name('edit-form');
@@ -111,11 +100,6 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () 
         Route::delete('/{id}', 'GameNightController@delete')->name('delete');
     });
 
-});
-
-Route::group(['as' => 'day.'], function () {
-    Route::get('/day/{day}', 'DayController@show')->name('show');
-    Route::get('/days', 'DayController@showList')->name('show-list');
 });
 
 Route::group(['as' => 'tournament.'], function () {

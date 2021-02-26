@@ -16,9 +16,6 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('day_id');
-            $table->foreign('day_id')->references('id')->on('days');
-
             $table->foreignId('tournament_id')->nullable();
             $table->foreign('tournament_id')->references('id')->on('tournaments');
 
@@ -32,7 +29,7 @@ class CreateGamesTable extends Migration
             $table->foreign('best_black_id')->references('id')->on('players');
 
             $table->enum('result', [App\Models\Game::RESULTS]);
-
+            $table->timestamp('date_time');
             $table->string('description', 256)->nullable();
 
             $table->timestamps();
