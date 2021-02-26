@@ -11,8 +11,6 @@
         <li class="list-group-item"><a href="{{ route('tournament.show-list') }}">Турниры</a></li>
         <li class="list-group-item"><a href="{{ route('player.show-list') }}">Игроки</a></li>
         <li class="list-group-item"><a href="{{ route('game.show-list') }}">Игры</a></li>
-        {{-- <li class="list-group-item">Голосования</li>
-        <li class="list-group-item">Ночи</li> --}}
     </ul>
 </p>
 
