@@ -40,7 +40,6 @@ class GameController extends Controller
     }
 
     public function delete(Request $request, $id){
-        $this->validate($request, $this->rules());
         Game::findOrFail($id)->delete();
         return back()->with('success', "Игра #{$id} удалена.");
     }
