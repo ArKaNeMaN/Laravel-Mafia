@@ -8,7 +8,7 @@
             <th>Лучший красный</th>
             <th>Лучший чёрный</th>
             <th>Результат</th>
-            <th>Описание</th>
+            {{-- <th>Описание</th> --}}
             @role('admin')
             <th></th>
             @endrole
@@ -36,7 +36,7 @@
                     <td>-</td>
                 @endif
                 <td>{{ __('mafia.result-'.$g->result) }}</td>
-                <td>{{ $g->description }}</td>
+                {{-- <td>{{ $g->description }}</td> --}}
                 @role('admin')
                 <td>
                     <a href="{{ route('game.edit-form', ['game' => $g]) }}">Изменить</a>
