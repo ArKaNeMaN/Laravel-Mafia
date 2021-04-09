@@ -17,17 +17,18 @@ class CreateGamesVotingsPlayersTable extends Migration
             $table->id();
 
             $table->foreignId('voting_id');
-            $table->foreign('voting_id', 'for-vt-id')->references('id')->on('games__votings');
+            $table->foreign('voting_id')->references('id')->on('games__votings');
 
             $table->foreignId('game_player_id');
-            $table->foreign('game_player_id', 'for-gpl-id')->references('id')->on('games__players');
+            $table->foreign('game_player_id')->references('id')->on('games__players');
 
             $table->foreignId('nominator_id');
-            $table->foreign('nominator_id', 'for-nomr-id')->references('id')->on('games__players');
+            $table->foreign('nominator_id')->references('id')->on('games__players');
 
+            $table->boolean('is_accident')->default(false);
             $table->boolean('is_kicked')->default(false);
 
-            $table->unique(['voting_id', 'game_player_id'], 'uniq-pl-vt');
+            $table->unique(['voting_id', 'game_player_id']);
 
             $table->timestamps();
         });

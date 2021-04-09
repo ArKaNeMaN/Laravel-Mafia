@@ -17,16 +17,16 @@ class CreateGamesTable extends Migration
             $table->id();
 
             $table->foreignId('tournament_id')->nullable();
-            $table->foreign('tournament_id', 'for-tr-id')->references('id')->on('tournaments');
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
 
             $table->foreignId('leader_id');
-            $table->foreign('leader_id', 'for-ld-id')->references('id')->on('players');
+            $table->foreign('leader_id')->references('id')->on('players');
 
             $table->foreignId('best_red_id')->nullable();
-            $table->foreign('best_red_id', 'for-bsrd-id')->references('id')->on('players');
+            $table->foreign('best_red_id')->references('id')->on('players');
 
             $table->foreignId('best_black_id')->nullable();
-            $table->foreign('best_black_id', 'for-bsbl-id')->references('id')->on('players');
+            $table->foreign('best_black_id')->references('id')->on('players');
 
             $table->enum('result', [App\Models\Game::RESULTS]);
             $table->timestamp('date_time');

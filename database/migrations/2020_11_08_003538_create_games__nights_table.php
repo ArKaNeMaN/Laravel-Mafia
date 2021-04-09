@@ -17,18 +17,18 @@ class CreateGamesNightsTable extends Migration
             $table->id();
 
             $table->foreignId('game_id');
-            $table->foreign('game_id', 'for-gm-id')->references('id')->on('games');
+            $table->foreign('game_id')->references('id')->on('games');
 
             $table->integer('ingame_id');
 
             $table->foreignId('killed_id')->nullable();
-            $table->foreign('killed_id', 'for-klr-id')->references('id')->on('games__players');
+            $table->foreign('killed_id')->references('id')->on('games__players');
 
             $table->foreignId('checked_don_id')->nullable();
-            $table->foreign('checked_don_id', 'for-chdn-id')->references('id')->on('games__players');
+            $table->foreign('checked_don_id')->references('id')->on('games__players');
 
             $table->foreignId('checked_sheriff_id')->nullable();
-            $table->foreign('checked_sheriff_id', 'for-chshr-id')->references('id')->on('games__players');
+            $table->foreign('checked_sheriff_id')->references('id')->on('games__players');
 
             $table->timestamps();
         });
