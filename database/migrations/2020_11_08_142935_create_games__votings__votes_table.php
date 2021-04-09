@@ -27,7 +27,7 @@ class CreateGamesVotingsVotesTable extends Migration
 
             $table->enum('for', App\Models\GameVotingVote::VOTE_FOR)->default('default');
 
-            $table->unique(['voting_id', 'game_player_id', 'for'], 'uniq-pl-vt');
+            $table->unique(['voting_id', 'game_player_id', 'for'], 'unique_vote_for_player');
 
             $table->timestamps();
         });
