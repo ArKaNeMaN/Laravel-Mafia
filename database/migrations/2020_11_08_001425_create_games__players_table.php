@@ -17,13 +17,13 @@ class CreateGamesPlayersTable extends Migration
             $table->id();
 
             $table->foreignId('game_id');
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('game_id', 'for-gm-id')->references('id')->on('games');
 
             $table->foreignId('player_id');
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('player_id', 'for-pl-id')->references('id')->on('players');
 
             $table->foreignId('helper_id')->nullable();
-            $table->foreign('helper_id')->references('id')->on('players');
+            $table->foreign('helper_id', 'for-hpr-id')->references('id')->on('players');
 
             $table->integer('ingame_player_id')->default(0);
             $table->enum('role', App\Models\GamePlayer::ROLES)->default('red');

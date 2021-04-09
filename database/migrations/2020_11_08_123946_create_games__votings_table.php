@@ -17,7 +17,7 @@ class CreateGamesVotingsTable extends Migration
             $table->id();
 
             $table->foreignId('game_id');
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('game_id', 'for-gm-id')->references('id')->on('games');
 
             $table->integer('ingame_id');
             $table->integer('votes_for_both')->default(0);
